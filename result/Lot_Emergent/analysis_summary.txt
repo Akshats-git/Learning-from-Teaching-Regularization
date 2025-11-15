@@ -1,0 +1,18 @@
+================================================================================
+PHASE 4 ANALYSIS SUMMARY
+================================================================================
+
+Checkpoint: ckpt/Phase4/full_ptb_vocab100_len20_alpha0.1.pt
+Epoch: 37
+
+Results:
+  Teacher PPL: 85.29
+  Student (with msg) PPL: 87.33
+  Student (no msg) PPL: 85.98
+  Message benefit: -1.35 PPL
+
+Language Properties:
+  Compositionality: 2.2276
+  Vocab coverage: 100.00%
+  Unique symbols: 100/100
+  Effective vocab: 100
