@@ -33,7 +33,7 @@ Generalization remains a central challenge in machine learning. In this work, we
 Traditional knowledge distillation is unidirectional: teacher → student. LoT introduces **bidirectional learning**:
 - **Forward KL**: Student learns to imitate teacher's predictions
 - **Reverse KL**: Teacher learns to be more "teachable"
-- **Emergent Language**: Teacher encodes knowledge into symbolic messages that student decodes
+- **Emergent Language** : Teacher encodes knowledge into symbolic messages that student decodes
 
 ### Advantages
 
@@ -258,7 +258,7 @@ Phase:    [────── LoT Foundation ──────][─ Message Int
 
 ---
 
-### LoT + Emergent Language ⭐ **Production Ready**
+### LoT + Emergent Language ⭐
 
 **Goal**: Enable structured knowledge transfer through emergent communication
 
@@ -361,13 +361,6 @@ bash run/Lot_Emergent.sh
 5. Saves checkpoint to `ckpt/Phase4/Lot_Emergent_ptb.pt`
 6. Logs results to `logs/Phase4/Lot_Emergent_ptb.log`
 
-**Expected output:**
-```
-Epoch 10 | Teacher PPL: 125.3 | Student PPL: 138.7
-Epoch 20 | Teacher PPL: 118.2 | Student PPL: 132.1
-Epoch 40 | Teacher PPL: 112.5 | Student PPL: 125.8
-Epoch 60 | Teacher PPL: 110.2 | Student PPL: 122.4
-```
 
 ### Example 2: Analyze Emergent Language
 
@@ -416,13 +409,6 @@ bash run/feedback_variants.sh mixed
 python analysis/analyze_phase1.py --result_dir result/feedback_variants
 ```
 
-**Expected Results:**
-
-| Feedback Type | Teacher PPL | Student PPL | Training Time |
-|---------------|-------------|-------------|---------------|
-| Positive | 110.2 | 145.3 | ~2 hours |
-| Negative | 112.5 | 148.7 | ~1.5 hours |
-| Mixed | 111.1 | 146.5 | ~2 hours |
 
 ---
 
@@ -489,30 +475,6 @@ grep "Teacher PPL" logs/Phase4/Lot_Emergent_ptb.log | tail -1
 grep "Student PPL" logs/Phase4/Lot_Emergent_ptb.log | tail -1
 ```
 
-**Expected Improvements:**
-- Student PPL: 145 (baseline) → 125-135 (with emergent language)
-- Improvement: 10-20 PPL points
-- Message benefit: Clear from analysis visualizations
-
----
-
-### Reinforcement Learning Experiments
-
-For Reinforcement Learning tasks, run the following command to implement experiments on BeamRider:
-```bash
-bash run/run_atari_games_LoT.sh
-```
-By changing `env_id` in the `run_atari_games_LoT.sh` file, you can run other games.
-
-### Transformer-XL on WikiText-103
-
-Run the following command for Transformer-XL on WikiText-103:
-```bash
-bash run/run_transformer_wikitext103_LoT.sh
-```
-
----
-
 ## 📊 Datasets
 
 ### Penn TreeBank (PTB)
@@ -536,30 +498,6 @@ bash run/run_transformer_wikitext103_LoT.sh
 - **Splits**: Train (50K), Test (10K)
 - **Use Case**: Image classification with LoT
 
----
-
-## 📈 Results
-
-### LoT + Emergent Language
-
-**Penn TreeBank Results:**
-
-| Model | Teacher PPL | Student PPL | Improvement |
-|-------|-------------|-------------|-------------|
-| Baseline LSTM | 125.3 | - | - |
-| Baseline LoT | 112.5 | 145.2 | - |
-| **LoT + Emergent Language** | **110.2** | **125.8** | **+19.4 PPL** |
-
-**Language Analysis:**
-
-| Metric | Value | Interpretation |
-|--------|-------|----------------|
-| Vocabulary Coverage | 85% | Most symbols actively used |
-| Positional Entropy | 3.2 bits | High compositionality |
-| Topographic Similarity | 0.72 | Strong input-message correlation |
-| Effective Vocab Size | 27/32 | Good symbol utilization |
-
----
 
 ## 🤝 Contributing
 
@@ -625,18 +563,6 @@ For questions, issues, or collaborations:
 **💡 Have a suggestion? [Open a discussion](https://github.com/rajeev-sr/Learning-from-Teaching-Regularization/discussions)**
 
 ---
-
-## 🔗 Related Works & Credits
-
-
-Some of the code in this repository is based on the following amazing works:
-
-* [CleanRL: High-quality Single-file Implementations of Deep Reinforcement Learning Algorithms](https://github.com/vwxyzjn/cleanrl) (Huang et al., 2022)
-* [Recurrent Neural Network Regularization](https://github.com/hjc18/language_modeling_lstm) (Zaremba et al., 2014)
-* [Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context](https://github.com/kimiyoung/transformer-xl) (Dai et al., 2018)
-* [Does Knowledge Distillation Really Work?](https://github.com/samuelstanton/gnosis) (Stanton et al., 2021)
-
-
 
 ## Citation
 We encourage citing our paper if our findings are used in your research.
